@@ -3,7 +3,7 @@ import React from 'react'
 import { Typography } from '@material-ui/core'
 
 import './Progress.css'
-// comment
+
 const Progress = ({ attempt, guessList }) => {
   return (
     <div>

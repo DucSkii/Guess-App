@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
-import Modal from './Modal/Modal'
+import MyModal from '../../utils/Modal/Modal'
+import ModalPage from './ModalPage/ModalPage'
 import './HowTo.css'
 
 const HowTo = () => {
@@ -10,8 +11,10 @@ const HowTo = () => {
 
   return (
     <div className="howTo">
-      <button className="howToButton" onClick={showHandler}>How to play</button>
-      <Modal show={show} showHandler={showHandler} />
+      <button type="button" className="howToButton" onClick={showHandler}>How to play</button>
+      <MyModal open={show}>
+        <ModalPage showHandler={showHandler} />
+      </MyModal>
     </div>
   )
 }
