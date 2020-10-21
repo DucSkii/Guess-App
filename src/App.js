@@ -2,7 +2,8 @@ import React from 'react';
 
 import { Grid, Typography, Paper, Divider } from '@material-ui/core'
 
-import Form from './components/Form'
+import HowTo from './components/HowTo/HowTo'
+import Form from './components/Form/Form'
 import Progress from './components/Progress/Progress'
 import { generateRandomNumber } from './utils'
 
@@ -11,7 +12,8 @@ class App extends React.Component {
     generatedNumber: generateRandomNumber(),
     guess: undefined,
     allGuesses: [],
-    attempt: 0
+    attempt: 0,
+    show: false,
   }
 
   updateAppState = (guess) => {
@@ -23,7 +25,6 @@ class App extends React.Component {
       allGuesses: [ ...prevState.allGuesses, { guess } ],
       attempt: prevState.attempt + 1
     }))
-
   }
 
   render() {
@@ -35,6 +36,7 @@ class App extends React.Component {
         </li>
       )
     })
+
     return (
       <Grid container style={{ height: '100vh' }} justify="center" alignItems="center">
         <Grid item xs={3}>
@@ -42,6 +44,7 @@ class App extends React.Component {
             <Typography align="center" variant="h2" gutterBottom>HOT or COLD</Typography>
             <Divider style={{ margin: '20px 0' }} />
             <Form returnGuessToApp={guess => this.updateAppState(guess)} />
+            <HowTo />
             <Progress attempt={attempt} guessList={guessList} />
           </Paper>
         </Grid>

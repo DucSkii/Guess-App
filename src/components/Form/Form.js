@@ -22,7 +22,7 @@ const Form = ({ returnGuessToApp }) => {
         placeholder="Enter your guess..."
         required
       />
-      <Button fullWidth varuant="contained" color="primary" type="submit">Guess</Button>
+      <Button fullWidth variant="contained" color="primary" type="submit">Guess</Button>
     </form>
   )
 }
