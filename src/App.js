@@ -26,7 +26,7 @@ class App extends React.Component {
     const { generatedNumber, attempt } = this.state
     const absDiff = Math.abs(guess - generatedNumber)
     console.log(generatedNumber, guess, absDiff)
-    const { numberColour, numberFeedback, numberFeedbackColour } = absDiffCheck(absDiff, attempt)
+    const { numberFeedback, numberFeedbackColour } = absDiffCheck(absDiff, attempt)
     this.setState(prevState => ({
       guess,
       allGuesses: [ ...prevState.allGuesses, { guess } ],
