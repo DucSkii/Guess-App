@@ -6,14 +6,14 @@ import { TextField, Button } from '@material-ui/core'
 const Form = ({ returnGuessToApp }) => {
 
   const error = () => {
-    alert('Enter a number between 1-100')
+    alert('Enter a number from 0-100')
   }
 
   const onSubmit = (event) => {
     event.preventDefault()
 
     const guess = event.target.elements.guess.value
-    if (guess > 100) {
+    if (guess > 100 || guess < 0) {
       event.target.elements.guess.value = ""
       return error()
     }

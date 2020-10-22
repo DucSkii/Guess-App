@@ -10,7 +10,7 @@ const ModalPage = ({ showHandler }) => {
       </div>
       <div className="modal-content">
         <div className="modal-body">
-          <p>A number is generated from 1-100.
+          <p>A number is generated from 0-100.
              Enter a guess and look at the colour of your guess to see if you are getting closer or further away from the answer.</p>
           <p>Press the reset button if you want to retry.</p>
         </div>

@@ -2,10 +2,11 @@ import React from 'react';
 
 import { Grid, Typography, Paper, Divider } from '@material-ui/core'
 
+import Refresh from './utils/Refresh/Refresh'
 import HowTo from './components/HowTo/HowTo'
 import Form from './components/Form/Form'
 import Progress from './components/Progress/Progress'
-import { generateRandomNumber } from './utils'
+import { generateRandomNumber, absDiffCheck } from './utils'
 
 class App extends React.Component {
   state = {
@@ -14,21 +15,26 @@ class App extends React.Component {
     allGuesses: [],
     attempt: 0,
     show: false,
+    numberColour: "#000000",
+    numberFeedback: '',
   }
 
   updateAppState = (guess) => {
-    const { generatedNumber } = this.state
+    const { generatedNumber, attempt } = this.state
     const absDiff = Math.abs(guess - generatedNumber)
-    console.log(generatedNumber, guess)
+    console.log(generatedNumber, guess, absDiff)
+    const { numberColour, numberFeedback } = absDiffCheck(absDiff, attempt)
     this.setState(prevState => ({
       guess,
       allGuesses: [ ...prevState.allGuesses, { guess } ],
-      attempt: prevState.attempt + 1
+      attempt: prevState.attempt + 1,
+      numberFeedback,
     }))
+
   }
 
   render() {
-    const { allGuesses, attempt } = this.state
+    const { allGuesses, attempt, numberFeedback } = this.state
     const guessList = allGuesses.map((item, index) => {
       return (
         <li key={index}>
@@ -44,6 +50,8 @@ class App extends React.Component {
             <Typography align="center" variant="h2" gutterBottom>HOT or COLD</Typography>
             <Divider style={{ margin: '20px 0' }} />
             <Form returnGuessToApp={guess => this.updateAppState(guess)} />
+            <div className="numberFeedback">{numberFeedback}</div>
+            <Refresh buttonName="Reset" />
             <HowTo />
             <Progress attempt={attempt} guessList={guessList} />
           </Paper>
