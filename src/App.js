@@ -17,7 +17,6 @@ class App extends React.Component {
     allGuesses: [],
     attempt: 0,
     show: false,
-    numberColour: "#000000",
     numberFeedback: '',
     numberFeedbackColour: '',
   }
@@ -26,22 +25,23 @@ class App extends React.Component {
     const { generatedNumber, attempt } = this.state
     const absDiff = Math.abs(guess - generatedNumber)
     console.log(generatedNumber, guess, absDiff)
-    const { numberFeedback, numberFeedbackColour } = absDiffCheck(absDiff, attempt)
+    const { numberTextFeedback, numberTextFeedbackColour } = absDiffCheck(absDiff, attempt)
     this.setState(prevState => ({
       guess,
-      allGuesses: [ ...prevState.allGuesses, { guess } ],
+      allGuesses: [ ...prevState.allGuesses, { guess, guessNumberFeedbackColour: numberTextFeedbackColour } ],
       attempt: prevState.attempt + 1,
-      numberFeedback,
-      numberFeedbackColour,
+      numberTextFeedback,
+      numberTextFeedbackColour,
     }))
-    console.log(numberFeedbackColour)
+    console.log(this.state)
   }
 
   render() {
-    const { allGuesses, attempt, numberFeedback, numberFeedbackColour } = this.state
+    const { allGuesses, attempt, numberTextFeedback, numberTextFeedbackColour } = this.state
+
     const guessList = allGuesses.map((item, index) => {
       return (
-        <li key={index}>
+        <li key={index} className={`numberColour${item.guessNumberFeedbackColour}`}>
           <span>{item.guess}</span>
         </li>
       )
@@ -55,7 +55,7 @@ class App extends React.Component {
             <Divider style={{ margin: '20px 0' }} />
             <Form returnGuessToApp={guess => this.updateAppState(guess)} />
             <div className="numberFeedback-wrapper">
-              <div className={`numberFeedback-${numberFeedbackColour}`}>{numberFeedback}</div>
+              <div className={`numberFeedback-${numberTextFeedbackColour}`}>{numberTextFeedback}</div>
             </div>
             <Refresh buttonName="Reset" />
             <HowTo />

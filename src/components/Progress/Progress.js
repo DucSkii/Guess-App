@@ -22,7 +22,7 @@ const Progress = ({ attempt, guessList }) => {
       <ul ref={someRef} className="progressBar__history">
         {guessList}
       </ul>
-    </div>
+    </div >
   )
 }
 

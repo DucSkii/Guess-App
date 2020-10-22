@@ -67,3 +67,23 @@
   font-size: 16px;
   border-radius: 4px;
 }
+
+.numberColour5 {
+  color: #48afd4;
+}
+
+.numberColour4 {
+  color: #87a3df;
+}
+
+.numberColour3 {
+  color: #ed7445;
+}
+
+.numberColour2 {
+  color: #f55d5d;
+}
+
+.numberColour1 {
+  color: #ff0000;
+}
