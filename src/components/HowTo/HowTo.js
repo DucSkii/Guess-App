@@ -12,7 +12,7 @@ const HowTo = () => {
   return (
     <div className="howTo">
       <button type="button" className="howToButton" onClick={showHandler}>How to play</button>
-      <MyModal open={show}>
+      <MyModal open={show} onClose={showHandler}>
         <ModalPage showHandler={showHandler} />
       </MyModal>
     </div>
